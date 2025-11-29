@@ -1,0 +1,662 @@
+/* ---------- GLOBAL ---------- */
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color-scheme: dark;
+  background: radial-gradient(circle at top, #020617 0, #000 50%, #020617 100%);
+  color: #e5e7eb;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
+  color: #e5e7eb;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ---------- APP LAYOUT ---------- */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP NAVBAR */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  backdrop-filter: blur(16px);
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.96),
+    rgba(15, 23, 42, 0.9),
+    rgba(15, 23, 42, 0.96)
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo-small {
+  height: 52px;
+  width: auto;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.9);
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.brand-text p {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* NAV LINKS */
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5f5;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  border-color: #38bdf8;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* BADGE */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+/* MAIN CONTENT */
+
+.content {
+  flex: 1;
+  padding: 28px 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- BUTTONS & INPUTS ---------- */
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease, color 0.15s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #0b1120;
+  box-shadow: 0 14px 30px rgba(34, 197, 94, 0.35);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.45);
+}
+
+.btn.secondary {
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.btn.secondary:hover {
+  background: rgba(30, 64, 175, 0.9);
+  border-color: rgba(191, 219, 254, 0.9);
+}
+
+.btn.small {
+  padding: 7px 14px;
+  font-size: 0.8rem;
+}
+
+/* Inputs */
+
+.input,
+textarea.input,
+select.input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 8px 10px;
+  color: #e5e7eb;
+  font-size: 0.86rem;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.input:focus,
+textarea.input:focus,
+select.input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+  background: rgba(15, 23, 42, 1);
+}
+
+/* ---------- CARDS & SHARED ---------- */
+
+.card {
+  background: radial-gradient(circle at top left, #0b1120, #020617);
+  border-radius: 22px;
+  padding: 22px 22px 20px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.9);
+}
+
+.muted {
+  color: #9ca3af;
+}
+
+.small {
+  font-size: 0.83rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px dashed rgba(55, 65, 81, 0.9);
+  margin: 18px 0;
+}
+
+/* ---------- AUTH / HERO SECTION ---------- */
+
+.auth-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* mini nav inside landing */
+
+.auth-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f97316, #e11d48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.auth-logo-main {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.auth-logo-sub {
+  display: block;
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+/* small nav links */
+
+.auth-links {
+  display: flex;
+  gap: 14px;
+  font-size: 0.78rem;
+}
+
+.auth-links a {
+  text-decoration: none;
+  color: #9ca3af;
+}
+
+.auth-links a:hover {
+  color: #e5e7eb;
+}
+
+/* hero layout */
+
+.auth-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(320px, 1.1fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.auth-hero {
+  padding-right: 8px;
+}
+
+.klu-banner {
+  width: 100%;
+  max-width: 1050px;
+  height: auto;
+  border-radius: 18px;
+  margin-bottom: 26px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+}
+
+.auth-badge {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fb923c;
+  margin-bottom: 6px;
+}
+
+.auth-title {
+  font-size: 2.3rem;
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.auth-title-highlight {
+  display: inline-block;
+  padding: 4px 14px;
+  margin-right: 6px;
+  border-radius: 999px;
+  background: rgba(248, 113, 113, 0.08);
+  color: #fb7185;
+  border: 1px solid rgba(248, 113, 113, 0.7);
+  font-weight: 700;
+}
+
+.auth-subtitle {
+  margin: 0 0 18px;
+  font-size: 0.92rem;
+  color: #9ca3af;
+  max-width: 540px;
+}
+
+.auth-cta-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.auth-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.auth-stat {
+  min-width: 120px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(75, 85, 99, 0.8);
+}
+
+.auth-stat-number {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.auth-stat-label {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+/* ---------- LOGIN CARD ---------- */
+
+.auth-card {
+  align-self: stretch;
+}
+
+.auth-card h2 {
+  margin: 0 0 8px;
+}
+
+.tabs {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.chip {
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.chip-active {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #020617;
+}
+
+.form {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.78rem;
+  margin-bottom: 3px;
+  color: #e5e7eb;
+}
+
+.or-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: rgba(55, 65, 81, 0.9);
+}
+
+.or-text {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #6b7280;
+}
+
+/* ---------- PAGE SHELLS (CLUBS / EVENTS / ABOUT) ---------- */
+
+.page-card {
+  max-width: 1080px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* CLUB GRID */
+
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.club-grid.mini {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.club-card {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.club-emoji {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.club-card h4 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+}
+
+.club-card p {
+  margin: 0;
+  font-size: 0.83rem;
+  color: #9ca3af;
+}
+
+/* ACTIVITY LIST (events, admin, student) */
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(51, 65, 85, 0.9);
+}
+
+.activity-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.7);
+  color: #7dd3fc;
+}
+
+/* ADMIN HEADER */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.admin-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat-card {
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(99, 102, 241, 0.7);
+}
+
+.stat-secondary {
+  border-color: rgba(56, 189, 248, 0.7);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.stat-value {
+  font-size: 0.9rem;
+}
+
+/* GRID FOR FORMS */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+/* STUDENT HERO */
+
+.student-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.hero-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.hero-badges-row span {
+  font-size: 0.78rem;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+/* ABOUT PAGE */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.9);
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pill-row span {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+/* MY REGS HEADER */
+
+.my-regs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 960px) {
+  .topbar {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .content {
+    padding: 20px 16px 24px;
+  }
+
+  .auth-main {
+    grid-template-columns: 1fr;
+  }
+
+  .student-hero,
+  .admin-header,
+  .about-layout {
+    flex-direction: column;
+    display: block;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+}
