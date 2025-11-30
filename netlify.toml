@@ -1,3 +1,4 @@
 [build]
+  base    = "klxtra"
   command = "npm run build"
   publish = "dist"
